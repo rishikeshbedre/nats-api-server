@@ -17,7 +17,7 @@ COPY lib nats-api-server/lib
 COPY util nats-api-server/util
 COPY go.mod go.sum main.go Makefile nats-api-server/
 
-WORKDIR nats-api-server
+WORKDIR /nats-api-server
 
 RUN export PATH=$PATH:/usr/local/go/bin \
 	&& ls \
