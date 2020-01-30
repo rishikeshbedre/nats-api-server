@@ -7,14 +7,11 @@ import (
 )
 
 const (
-	// Make sure the password is reasonably long to generate enough entropy.
-	//PasswordLength = 22
-	// Common advice from the past couple of years suggests that 10 should be sufficient.
-	// Up that a little, to 11. Feel free to raise this higher if this value from 2015 is
-	// no longer appropriate. Min is bcrypt.MinCost, Max is bcrypt.MaxCost.
+	//DefaultCost is set to 11, you can raise this value.
 	DefaultCost = 11
 )
 
+//GenHashPassword function generates bcrypt password from plain text
 func GenHashPassword(pw string) (string, error) {
 
 	cb, err := bcrypt.GenerateFromPassword([]byte(pw), DefaultCost)
