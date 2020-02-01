@@ -6,9 +6,6 @@ services:
   - docker
 
 install:
-  - go get github.com/gin-gonic/gin
-  - go get github.com/json-iterator/go
-  - go get golang.org/x/crypto
   - make
 
 
