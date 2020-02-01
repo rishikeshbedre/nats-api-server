@@ -22,8 +22,5 @@ jobs:
       - checkout
 
       # specify any bash command here prefixed with `run: `
-      - run:
-          name: Install Docker client
-          command: sudo apt-get install -y docker-cli
-      - run: ./build.sh
+      - run: docker build .
 
