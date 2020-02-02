@@ -6,7 +6,9 @@ go:
 services:
   - docker
 
-install:
+install: skip
+
+script:
   - ./build.sh
 
 
