@@ -6,6 +6,9 @@ services:
   - docker
 
 install:
+  - name: Go report card
+    uses: creekorful/goreportcard-action@v1.0
+
   - ./build.sh
 
 
