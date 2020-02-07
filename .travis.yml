@@ -3,20 +3,18 @@ language: go
 go:
   - "1.12.6"
 
-env:
-  - GO111MODULE=on
-
 services:
   - docker
 
-before_install:
+env:
+  - GO111MODULE=on
+
+install:
   - go mod download
 
-install: skip
-
 script:
-  - ./build.sh
-  - go test -race -coverprofile=coverage.txt -covermode=atomic github.com/rishikeshbedre/nats-api-server/util
+  - ./scripts/build.sh
+  - make test
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
