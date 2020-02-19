@@ -1,7 +1,6 @@
 package main
 
 import (
-
 	"github.com/rishikeshbedre/nats-api-server/apis"
 
 	"github.com/gin-gonic/gin"

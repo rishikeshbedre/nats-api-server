@@ -1,11 +1,11 @@
 package lib
 
 import (
+	"errors"
 	"io/ioutil"
 	"os/exec"
 	"sync"
 	"time"
-	"errors"
 
 	jsoniter "github.com/json-iterator/go"
 )
@@ -58,7 +58,7 @@ func OpAddUser(user, password string) error {
 	for _, tempinfo := range cai.authorizationInfo {
 		if tempinfo.User == user {
 			cai.RUnlock()
-			return errors.New("User:"+user+" already present")
+			return errors.New("User:" + user + " already present")
 		}
 	}
 	cai.RUnlock()
@@ -80,7 +80,7 @@ func OpDeleteUser(user string) error {
 		}
 	}
 	cai.Unlock()
-	return errors.New("User:"+user+" cannot be deleted")
+	return errors.New("User:" + user + " cannot be deleted")
 }
 
 //OpAddTopic function adds topics to the particular user in the authorization configuration
@@ -93,7 +93,7 @@ func OpAddTopic(info AddDeleteTopicJSON) error {
 				for _, authtopicpublish := range authinfo.Permissions.Publish {
 					if infotopicpublish == authtopicpublish {
 						cai.Unlock()
-						return errors.New(""+infotopicpublish+" topic is already present for the user:"+info.User)
+						return errors.New("" + infotopicpublish + " topic is already present for the user:" + info.User)
 					}
 				}
 			}
@@ -101,7 +101,7 @@ func OpAddTopic(info AddDeleteTopicJSON) error {
 				for _, authtopicsubscribe := range authinfo.Permissions.Subscribe {
 					if infotopicsubscribe == authtopicsubscribe {
 						cai.Unlock()
-						return errors.New(""+infotopicsubscribe+" topic is already present for the user:"+info.User)
+						return errors.New("" + infotopicsubscribe + " topic is already present for the user:" + info.User)
 					}
 				}
 			}
@@ -114,7 +114,7 @@ func OpAddTopic(info AddDeleteTopicJSON) error {
 		}
 	}
 	cai.Unlock()
-	return errors.New("Cannot add topics for the user:"+info.User)
+	return errors.New("Cannot add topics for the user:" + info.User)
 }
 
 //OpDeleteTopic function deletes topics to the particular user in the authorization configuration
@@ -164,7 +164,7 @@ func OpDeleteTopic(info AddDeleteTopicJSON) error {
 		}
 	}
 	cai.Unlock()
-	return errors.New("Cannot delete topics for the user:"+info.User)
+	return errors.New("Cannot delete topics for the user:" + info.User)
 }
 
 //OpDownloadConfiguration function stores the authorization configuration to the file and reload the nats server

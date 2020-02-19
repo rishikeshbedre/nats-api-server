@@ -1,17 +1,15 @@
 package lib
 
-import ()
-
 //PermissionJSON stores permissions for each user in authorization configuration
 type PermissionJSON struct {
-	Publish []string `json:"publish"`
+	Publish   []string `json:"publish"`
 	Subscribe []string `json:"subscribe"`
 }
 
 //AuthorizationJSON stores info of each user in authorization configuration
 type AuthorizationJSON struct {
-	User string `json:"user"`
-	Password string `json:"password"`
+	User        string         `json:"user"`
+	Password    string         `json:"password"`
 	Permissions PermissionJSON `json:"permissions"`
 }
 
@@ -27,13 +25,13 @@ type DownloadConfigurationJSON struct {
 
 //AddUserJSON maps and validate adding a user in authorization configuration
 type AddUserJSON struct {
-	User string `json:"user" binding:"required"`
+	User     string `json:"user" binding:"required"`
 	Password string `json:"password" binding:"required"`
 }
 
 //AddDeleteTopicJSON maps and validate adding and deleting topics in authorization configuration
 type AddDeleteTopicJSON struct {
-	User string `json:"user" binding:"required"`
+	User        string         `json:"user" binding:"required"`
 	Permissions PermissionJSON `json:"permissions" binding:"required"`
 }
 
