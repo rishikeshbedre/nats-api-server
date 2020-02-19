@@ -21,7 +21,7 @@ var cai = concurrentAuthInfo{}
 
 //init function reads configuration from file and stores in the concurrentAuthInfo
 func init() {
-	byteconf, readerr := ioutil.ReadFile("/home/nats/configuration/authorization/auth.conf")
+	byteconf, readerr := ioutil.ReadFile("configuration/authorization/auth.conf")
 	if readerr != nil {
 		panic(readerr)
 	}
@@ -192,7 +192,7 @@ func writeConfiguration() error {
 	if jsonbinderr != nil {
 		return jsonbinderr
 	}
-	filewriteerr := ioutil.WriteFile("/home/nats/configuration/authorization/auth.conf", byteconf, 0777)
+	filewriteerr := ioutil.WriteFile("configuration/authorization/auth.conf", byteconf, 0777)
 	if filewriteerr != nil {
 		return filewriteerr
 	}
@@ -203,7 +203,7 @@ func writeConfiguration() error {
 //reloadConfiguration function reloads the nats server
 func reloadConfiguration() error {
 	args := []string{"--signal", "reload"}
-	cmd := exec.Command("/home/nats/nats-server", args...)
+	cmd := exec.Command("./nats-server", args...)
 	if err := cmd.Run(); err != nil {
 		return err
 	}

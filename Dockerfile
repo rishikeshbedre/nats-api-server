@@ -37,4 +37,4 @@ EXPOSE 4222 8222 6222 6060
 
 WORKDIR /home/nats
 
-CMD setsid /home/nats/nats-api-server & /home/nats/nats-server -c /home/nats/configuration/nats-server.conf
+CMD setsid ./nats-api-server & ./nats-server -c configuration/nats-server.conf
