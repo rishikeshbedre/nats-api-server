@@ -30,11 +30,10 @@ FROM alpine:3.10
 
 COPY --from=build /nats-api-server/nats-api-server /home/nats/
 COPY --from=middlelayer /usr/local/bin/nats-server /home/nats/nats-server
-COPY configuration /home/nats/configuration
-COPY scripts /home/nats/scripts
+COPY configuration /home/configuration
 
 EXPOSE 4222 8222 6222 6060
 
 WORKDIR /home/nats
 
-CMD setsid ./nats-api-server & ./nats-server -c configuration/nats-server.conf
+CMD setsid ./nats-api-server & ./nats-server -c ../configuration/nats-server.conf

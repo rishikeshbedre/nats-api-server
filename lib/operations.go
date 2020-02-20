@@ -21,7 +21,7 @@ var cai = concurrentAuthInfo{}
 
 //init function reads configuration from file and stores in the concurrentAuthInfo
 func init() {
-	byteconf, readerr := ioutil.ReadFile("configuration/authorization/auth.conf")
+	byteconf, readerr := ioutil.ReadFile("../configuration/authorization/auth.conf")
 	if readerr != nil {
 		panic(readerr)
 	}
@@ -192,7 +192,7 @@ func writeConfiguration() error {
 	if jsonbinderr != nil {
 		return jsonbinderr
 	}
-	filewriteerr := ioutil.WriteFile("configuration/authorization/auth.conf", byteconf, 0777)
+	filewriteerr := ioutil.WriteFile("../configuration/authorization/auth.conf", byteconf, 0777)
 	if filewriteerr != nil {
 		return filewriteerr
 	}
