@@ -21,4 +21,4 @@ NATS API Server is a REST based configuration server for [NATS-Server](https://g
 
 ## How it Works
 
-![nats-api-server](https://github.com/rishikeshbedre/nats-api-server/blob/master/extras/nats-api-server.jpg)
+<img align="center" width="500px" src="https://github.com/rishikeshbedre/nats-api-server/blob/master/extras/nats-api-server.jpg">
