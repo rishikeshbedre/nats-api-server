@@ -22,3 +22,9 @@ NATS API Server is a REST based configuration server for [NATS-Server](https://g
 ## How it Works
 
 ![nats-api-server](https://github.com/rishikeshbedre/nats-api-server/blob/master/extras/nats-api-server.jpg)
+
+NATS API Server has rest end points to add|delete user|topic where it writes the authorization configuration to a file. The API Server also has an option to send reload signal to NATS-Server where it reads this configuration file and allows only authenticated users to connect to NATS-Server.
+
+## Usage
+
+
