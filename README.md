@@ -1,4 +1,4 @@
-# nats-api-server
+# NATS API SERVER
 
 ![Licence](https://img.shields.io/github/license/rishikeshbedre/nats-api-server)
 [![Build Status](https://travis-ci.com/rishikeshbedre/nats-api-server.svg?branch=master)](https://travis-ci.com/rishikeshbedre/nats-api-server)
@@ -6,4 +6,9 @@
 [![codecov](https://codecov.io/gh/rishikeshbedre/nats-api-server/branch/master/graph/badge.svg)](https://codecov.io/gh/rishikeshbedre/nats-api-server)
 [![Go Report Card](https://goreportcard.com/badge/github.com/rishikeshbedre/nats-api-server)](https://goreportcard.com/report/github.com/rishikeshbedre/nats-api-server)
 
-Documentation #TBD
+NATS-API-Server is a REST based configuration server for [NATS-Server](https://github.com/nats-io/nats-server). It features REST end-points to configure user authorization and reload the NATS-Server. It is written using [Gin Web Framework](https://github.com/gin-gonic/gin) and [jsoniter](https://github.com/json-iterator/go) for high performant server.
+
+## Contents
+
+- [NATS API SERVER](#nats-api-server)
+  - [Contents](#contents)
