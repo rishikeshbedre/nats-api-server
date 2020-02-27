@@ -13,7 +13,7 @@ install:
   - go mod download
 
 script:
-  - ./scripts/build.sh
+  - ./extras/build.sh
   - make test
 
 after_success:

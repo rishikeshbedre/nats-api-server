@@ -15,7 +15,6 @@ COPY apis nats-api-server/apis
 COPY configuration nats-api-server/configuration
 COPY lib nats-api-server/lib
 COPY util nats-api-server/util
-COPY scripts nats-api-server/scripts
 COPY go.mod go.sum main.go Makefile nats-api-server/
 
 WORKDIR /nats-api-server
