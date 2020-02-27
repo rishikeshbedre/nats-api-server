@@ -43,3 +43,4 @@ $ ./nats-api-server
 ## API Documentation
 
 ### Add User
+Adds new user to the authorization configuration.
