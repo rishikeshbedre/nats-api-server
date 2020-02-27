@@ -47,25 +47,27 @@ $ ./nats-api-server
 Adds new user to the authorization configuration.
 
 - **URL**
-  /user
+  `/user`
 
 - **Method:**
   `POST`
 
 - **Request:**
   - **Header:**
-    - **Content-Type:** application/json
-  - **Body:** {"user":"xyz","password":"123"}
+    - **Content-Type:** `application/json`
+  - **Body:** `{"user":"xyz","password":"123"}`
 
 - **Success Response:**
-  - **Code:** 200 
+  - **Code:** `200` 
   - **Content:** `{"message":"User:xyz added"}`
  
 - **Error Response:**
-  - **Code:** 400 STATUS BAD REQUEST 
+  - **Code:** `400 STATUS BAD REQUEST` 
   - **Content:** `{"error":"User:xyz already present"}`
+
   OR
-  - **Code:** 400 STATUS BAD REQUEST 
+
+  - **Code:** `400 STATUS BAD REQUEST` 
   - **Content:** `{"error":"Key: 'AddUserJSON.Password' Error:Field validation for 'Password' failed on the 'required' tag"}`
 
 - **Sample Call:**
@@ -79,25 +81,27 @@ Adds new user to the authorization configuration.
 Deletes the user from authorization configuration.
 
 - **URL**
-  /user
+  `/user`
 
 - **Method:**
   `DELETE`
 
 - **Request:**
   - **Header:**
-    - **Content-Type:** application/json
-  - **Body:** {"user":"xyz"}
+    - **Content-Type:** `application/json`
+  - **Body:** `{"user":"xyz"}`
 
 - **Success Response:**
-  - **Code:** 200 
+  - **Code:** `200` 
   - **Content:** `{"message":"User:xyz deleted"}`
  
 - **Error Response:**
-  - **Code:** 400 STATUS BAD REQUEST
+  - **Code:** `400 STATUS BAD REQUEST`
   - **Content:** `{"error":"User:xyz cannot be deleted"}`
+
   OR
-  - **Code:** 400 STATUS BAD REQUEST <br />
+
+  - **Code:** `400 STATUS BAD REQUEST`
   - **Content:** `{"error":"Key: 'DeleteUserJSON.User' Error:Field validation for 'User' failed on the 'required' tag"}`
 
 - **Sample Call:**
