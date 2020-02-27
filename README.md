@@ -41,3 +41,5 @@ $ ./nats-api-server
 2. Then you need to install [NATS-Server](https://docs.nats.io/nats-server/installation#installing-from-the-source) and start the server using the configuration file present in the [NATS API Server](https://github.com/rishikeshbedre/nats-api-server/blob/master/configuration/nats-server.conf).
 
 ## API Documentation
+
+### Add User
