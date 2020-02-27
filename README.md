@@ -29,14 +29,15 @@ NATS API Server has rest end points to add|delete user|topic where it writes the
 
 To install NATS API Server, you need to install Go and set your Go workspace first.
 
-1. The first need is [Go](https://golang.org/) installed (**version 1.12+ is required**), then you can use the below Go command to install package.
+1. The first need is [Go](https://golang.org/) installed (**version 1.12+ is required**), this project uses go modules and provides a make file. You should be able to simply:
 
 ```sh
-$ go get -u github.com/rishikeshbedre/nats-api-server
+$ git clone https://github.com/rishikeshbedre/nats-api-server.git
+$ cd nats-api-server
+$ make
+$ ./nats-api-server
 ```
 
 2. Then you need to install [NATS-Server](https://docs.nats.io/nats-server/installation#installing-from-the-source) and start the server using the configuration file present in the [NATS API Server](https://github.com/rishikeshbedre/nats-api-server/blob/master/configuration/nats-server.conf).
-
-3. Then start the NATS API Server and use any REST based client to send the request to server.
 
 ## API Documentation
