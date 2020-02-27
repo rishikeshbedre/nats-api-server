@@ -46,7 +46,7 @@ $ ./nats-api-server
 
 Adds new user to the authorization configuration.
 
-- **URL**
+- #### URL
   `/user`
 
 - **Method:**
