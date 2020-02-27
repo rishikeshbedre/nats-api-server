@@ -43,34 +43,28 @@ $ ./nats-api-server
 ## API Documentation
 
 ### Add User
-----
+
 Adds new user to the authorization configuration.
 
 - **URL**
-
   /user
 
 - **Method:**
-
   `POST`
 
 - **Request:**
   - **Header:**
     - **Content-Type:** application/json
-  - **Resquest-Body:** {"user":"xyz","password":"123"}
+  - **Body:** {"user":"xyz","password":"123"}
 
 - **Success Response:**
-
   - **Code:** 200 
   - **Content:** `{"message":"User:xyz added"}`
  
 - **Error Response:**
-
   - **Code:** 400 STATUS BAD REQUEST 
   - **Content:** `{"error":"User:xyz already present"}`
-
   OR
-
   - **Code:** 400 STATUS BAD REQUEST 
   - **Content:** `{"error":"Key: 'AddUserJSON.Password' Error:Field validation for 'Password' failed on the 'required' tag"}`
 
@@ -81,33 +75,32 @@ Adds new user to the authorization configuration.
   ```
 
 ### Delete User
-----
+
 Deletes the user from authorization configuration.
 
-* **URL**
-
+- **URL**
   /user
 
-* **Method:**
-
+- **Method:**
   `DELETE`
 
-* **Success Response:**
+- **Request:**
+  - **Header:**
+    - **Content-Type:** application/json
+  - **Body:** {"user":"xyz"}
 
-  * **Code:** 200 <br />
-    **Content:** `{"message":"User:xyz deleted"}`
+- **Success Response:**
+  - **Code:** 200 
+  - **Content:** `{"message":"User:xyz deleted"}`
  
-* **Error Response:**
-
-  * **Code:** 400 STATUS BAD REQUEST <br />
-    **Content:** `{"error":"User:xyz cannot be deleted"}`
-
+- **Error Response:**
+  - **Code:** 400 STATUS BAD REQUEST
+  - **Content:** `{"error":"User:xyz cannot be deleted"}`
   OR
+  - **Code:** 400 STATUS BAD REQUEST <br />
+  - **Content:** `{"error":"Key: 'DeleteUserJSON.User' Error:Field validation for 'User' failed on the 'required' tag"}`
 
-  * **Code:** 400 STATUS BAD REQUEST <br />
-    **Content:** `{"error":"Key: 'DeleteUserJSON.User' Error:Field validation for 'User' failed on the 'required' tag"}`
-
-* **Sample Call:**
+- **Sample Call:**
 
   ```ssh
     $curl --header "Content-Type: application/json" --request DELETE --data '{"user":"xyz"}' http://localhost:6060/user
