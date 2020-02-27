@@ -4,3 +4,4 @@ all:
 test:
 	cp -r configuration apis/
 	env GO111MODULE=on go test -race -coverprofile=coverage.txt -covermode=atomic github.com/rishikeshbedre/nats-api-server/...
+	rm -rf apis/configuration
