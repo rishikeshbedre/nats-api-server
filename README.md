@@ -15,6 +15,12 @@ NATS API Server is a REST based configuration server for [NATS-Server](https://g
   - [How it works](#how-it-works)
   - [Usage](#usage)
   - [API Documentation](#api-documentation)
+    - [Add User](#add-user)
+    - [Delete User](#delete-user)
+    - [Show User](#show-user)
+    - [Add Topic](#add-topic)
+    - [Delete Topic](#delete-topic)
+    - [Download Configuration](#download-configuration)
   - [Docker](#docker)
   - [Kubernetes](#kubernetes)
   - [Testing](#testing)
@@ -46,7 +52,7 @@ $ ./nats-api-server
 
 Adds new user to the authorization configuration.
 
-- #### URL
+- **URL:**
   `/user`
 
 - **Method:**
@@ -80,7 +86,7 @@ Adds new user to the authorization configuration.
 
 Deletes the user from authorization configuration.
 
-- **URL**
+- **URL:**
   `/user`
 
 - **Method:**
@@ -108,4 +114,30 @@ Deletes the user from authorization configuration.
 
   ```ssh
     $curl --header "Content-Type: application/json" --request DELETE --data '{"user":"xyz"}' http://localhost:6060/user
+  ```
+
+### Show User
+
+Returns the current authorization configuration.
+
+- **URL:**
+  `/user`
+
+- **Method:**
+  `GET`
+
+- **Request:** `NONE`
+
+- **Success Response:**
+  - **Code:** `200` 
+  - **Content:** `{"message":[{"user":"natsdemouser","permissions":{"publish":null,"subscribe":null}}]}`
+ 
+- **Error Response:**
+  - **Code:** `400 STATUS BAD REQUEST`
+  - **Content:** `{"error":"???"}`
+
+- **Sample Call:**
+
+  ```ssh
+    $curl --request GET http://localhost:6060/user
   ```
