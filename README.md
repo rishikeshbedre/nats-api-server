@@ -155,7 +155,7 @@ Adds the topics to the particular user in authorization configuration. If any of
 - **Request:**
   - **Header:**
     - **Content-Type:** `application/json`
-  - **Body:** `{"user":"xyz","permissions":{"publish":["test","quest"],"subscriber":["test","quest"]}}`
+  - **Body:** `{"user":"xyz","permissions":{"publish":["test","quest"],"subscribe":["test","quest"]}}`
 
 - **Success Response:**
   - **Code:** `200` 
@@ -173,7 +173,7 @@ Adds the topics to the particular user in authorization configuration. If any of
 - **Sample Call:**
 
   ```ssh
-    curl --header "Content-Type: application/json" --request POST --data '{"user":"xyz","permissions":{"publish":["test","quest"],"subscriber":["test","quest"]}}' http://localhost:6060/topic
+    curl --header "Content-Type: application/json" --request POST --data '{"user":"xyz","permissions":{"publish":["test","quest"],"subscribe":["test","quest"]}}' http://localhost:6060/topic
   ```
 
 ### Delete Topic
@@ -189,7 +189,7 @@ Deletes the topics from the particular user in authorization configuration. If a
 - **Request:**
   - **Header:**
     - **Content-Type:** `application/json`
-  - **Body:** `{"user":"xyz","permissions":{"publish":["quest"],"subscriber":["quest"]}}`
+  - **Body:** `{"user":"xyz","permissions":{"publish":["quest"],"subscribe":["quest"]}}`
 
 - **Success Response:**
   - **Code:** `200` 
@@ -207,7 +207,7 @@ Deletes the topics from the particular user in authorization configuration. If a
 - **Sample Call:**
 
   ```ssh
-    curl --header "Content-Type: application/json" --request DELETE --data '{"user":"xyz","permissions":{"publish":["quest"],"subscriber":["quest"]}}' http://localhost:6060/topic
+    curl --header "Content-Type: application/json" --request DELETE --data '{"user":"xyz","permissions":{"publish":["quest"],"subscribe":["quest"]}}' http://localhost:6060/topic
   ```
 
 ### Download Configuration
