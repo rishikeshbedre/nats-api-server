@@ -39,4 +39,4 @@ EXPOSE 4222 8222 6222 6060
 
 WORKDIR /home/nats
 
-CMD ./init.sh & setsid ./nats-api-server & ./nats-server -c ./configuration/nats-server.conf
+CMD ./init.sh

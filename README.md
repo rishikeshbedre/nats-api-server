@@ -239,6 +239,20 @@ Stores the authorization configuration to the file and reload the nats server.<b
 
 ## Docker
 
+Building the image for nats api server acutually builds both nats api server and nats server in one container, so when you run the container two services will run in the same container.
+
+1. To build the image run following command:
+
+  ```ssh
+    $./extras/build.sh
+  ```
+
+2. While running the image you can persist the configuration file by mounting the volume to the host and container. To run the container just run the following command:
+
+  ```ssh
+    $docker run -it -p 4222:4222 -p 6060:6060 -v /home/rishikesh/Desktop/nats-data:/home/nats/configuration nats-api-server:0.0.1
+  ```
+
 ## Kubernetes
 
 ## Testing
@@ -246,5 +260,6 @@ Stores the authorization configuration to the file and reload the nats server.<b
 To run test just run following command:
 
   ```ssh
+    $go mod download
     $make test
   ```
