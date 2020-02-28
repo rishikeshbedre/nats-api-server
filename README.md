@@ -212,7 +212,7 @@ Deletes the topics from the particular user in authorization configuration. If a
 
 ### Download Configuration
 
-Stores the authorization configuration to the file and reload the nats server.
+Stores the authorization configuration to the file and reload the nats server.<br>
 **Note:** Until you send this request to NATS API Server, add|delete user|topic requests doesn't reflect in NATS Server.
 
 - **URL:**
