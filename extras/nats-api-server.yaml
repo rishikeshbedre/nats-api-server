@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: "nats-api-server"
+spec:
+  type: ClusterIP
+  ports:
+  - name: "nats-port"
+    port: 4222
+    targetPort: 4222
+    protocol: TCP
+  - name: "api-port"
+    port: 6060
+    targetPort: 6060
+    protocol: TCP
+  selector:
+    service_nats: "nats-app"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "nats-api-server"
+spec:
+  selector:
+    matchLabels:
+      service_nats: "nats-app"
+  template:
+    metadata:
+      labels:
+        service_nats: "nats-app"
+    spec:
+      containers:
+      - name: nats-api
+        image: nats-api-server:0.0.1
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+        - name: nats-data
+          mountPath: /home/nats/configuration
+        ports:
+        - containerPort: 4222
+          name: nats-port
+          protocol: TCP
+        - containerPort: 6060
+          name: api-port
+          protocol: TCP  
+      volumes:
+      - name: nats-data
+        hostPath:
+          path: "/home/rishikesh/nats-data"
+          type: DirectoryOrCreate  
+      nodeSelector:
+        kubernetes.io/hostname: "rishikesh"

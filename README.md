@@ -255,6 +255,12 @@ Building the image for nats api server acutually builds both nats api server and
 
 ## Kubernetes
 
+You can run this setup in kubernetes also by using this [yaml file](https://github.com/rishikeshbedre/nats-api-server/blob/master/extras/nats-api-server.yaml):
+
+  ```ssh
+    $kubectl apply -f ./nats-api-server.yaml
+  ```
+
 ## Testing
 
 To run test just run following command:
