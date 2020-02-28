@@ -6,7 +6,7 @@
 [![codecov](https://codecov.io/gh/rishikeshbedre/nats-api-server/branch/master/graph/badge.svg)](https://codecov.io/gh/rishikeshbedre/nats-api-server)
 [![Go Report Card](https://goreportcard.com/badge/github.com/rishikeshbedre/nats-api-server)](https://goreportcard.com/report/github.com/rishikeshbedre/nats-api-server)
 
-NATS API Server is a REST based configuration server for [NATS-Server](https://github.com/nats-io/nats-server). It features REST end-points to configure user authorization and reload the NATS-Server. It is written using [Gin Web Framework](https://github.com/gin-gonic/gin) and [jsoniter](https://github.com/json-iterator/go) for high performant server.
+NATS API Server is a REST based configuration server for [NATS-Server](https://github.com/nats-io/nats-server). It features REST end-points to configure user authorization and reload the NATS-Server. It is written using [Gin Web Framework](https://github.com/gin-gonic/gin) and [jsoniter](https://github.com/json-iterator/go) to make server high performant.
 
 ## Contents
 
@@ -33,9 +33,9 @@ NATS API Server has rest end points to add|delete user|topic where it writes the
 
 ## Usage
 
-To install NATS API Server, you need to install Go and set your Go workspace first.
+To install NATS API Server, you need to install [Go](https://golang.org/)(**version 1.12+ is required**) and set your Go workspace.
 
-1. The first need is [Go](https://golang.org/) installed (**version 1.12+ is required**), this project uses go modules and provides a make file. You should be able to simply:
+1. This project uses go modules and provides a make file. You should be able to simply install and start:
 
 ```sh
 $ git clone https://github.com/rishikeshbedre/nats-api-server.git
@@ -134,10 +134,117 @@ Returns the current authorization configuration.
  
 - **Error Response:**
   - **Code:** `400 STATUS BAD REQUEST`
-  - **Content:** `{"error":"???"}`
+  - **Content:** `{"error":"???jsonbinderror"}`
 
 - **Sample Call:**
 
   ```ssh
     $curl --request GET http://localhost:6060/user
+  ```
+
+### Add Topic
+
+Adds the topics to the particular user in authorization configuration. If any of the topics are present in the request JSON are available in the authorization configuration for that particular user, this end point returns a error message.
+
+- **URL:**
+  `/topic`
+
+- **Method:**
+  `POST`
+
+- **Request:**
+  - **Header:**
+    - **Content-Type:** `application/json`
+  - **Body:** `{"user":"xyz","permissions":{"publish":["test","quest"],"subscriber":["test","quest"]}}`
+
+- **Success Response:**
+  - **Code:** `200` 
+  - **Content:** `{"message":"Topics Added for the user:xyz"}`
+ 
+- **Error Response:**
+  - **Code:** `400 STATUS BAD REQUEST` 
+  - **Content:** `{"error":"test topic is already present for the user:xyz"}`
+
+  OR
+
+  - **Code:** `400 STATUS BAD REQUEST` 
+  - **Content:** `{"error":"Key: 'AddDeleteTopicJSON.User' Error:Field validation for 'User' failed on the 'required' tag"}`
+
+- **Sample Call:**
+
+  ```ssh
+    curl --header "Content-Type: application/json" --request POST --data '{"user":"xyz","permissions":{"publish":["test","quest"],"subscriber":["test","quest"]}}' http://localhost:6060/topic
+  ```
+
+### Delete Topic
+
+Deletes the topics from the particular user in authorization configuration. If any of the topics are present in the request JSON are not available in the authorization configuration for that particular user, this end point returns a error message.
+
+- **URL:**
+  `/topic`
+
+- **Method:**
+  `DELETE`
+
+- **Request:**
+  - **Header:**
+    - **Content-Type:** `application/json`
+  - **Body:** `{"user":"xyz","permissions":{"publish":["quest"],"subscriber":["quest"]}}`
+
+- **Success Response:**
+  - **Code:** `200` 
+  - **Content:** `{"message":"Topics deleted for the user:xyz"}`
+ 
+- **Error Response:**
+  - **Code:** `400 STATUS BAD REQUEST` 
+  - **Content:** `{"error":"Cannot delete topics for the user:xyz"}`
+
+  OR
+
+  - **Code:** `400 STATUS BAD REQUEST` 
+  - **Content:** `{"error":"Key: 'AddDeleteTopicJSON.User' Error:Field validation for 'User' failed on the 'required' tag"}`
+
+- **Sample Call:**
+
+  ```ssh
+    curl --header "Content-Type: application/json" --request DELETE --data '{"user":"xyz","permissions":{"publish":["quest"],"subscriber":["quest"]}}' http://localhost:6060/topic
+  ```
+
+### Download Configuration
+
+Stores the authorization configuration to the file and reload the nats server.
+**Note:** Until you send this request to NATS API Server, add|delete user|topic requests doesn't reflect in NATS Server.
+
+- **URL:**
+  `reload`
+
+- **Method:**
+  `POST`
+
+- **Request:** `NONE`
+
+- **Success Response:**
+  - **Code:** `200` 
+  - **Content:** `{"message":"Download and reload of Configuration Successful"}`
+ 
+- **Error Response:**
+  - **Code:** `400 STATUS BAD REQUEST` 
+  - **Content:** `{"error":"??filewriteerror or ??jsonbinderror or ??cmderror"}`
+
+- **Sample Call:**
+
+  ```ssh
+    curl --request POST http://localhost:6060/reload
+  ```
+
+## Docker
+
+## Kubernetes
+
+## Testing
+
+To run test just run following command:
+
+  ```ssh
+    $make test
   ```
