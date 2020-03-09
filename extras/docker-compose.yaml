@@ -1,0 +1,16 @@
+version: '3.5'
+services:
+  nats-api-server:
+    ports:
+    - "4222:4222"
+    - "6060:6060"
+    networks:
+      - nats-network
+    image: nats-api-server:0.0.1
+    volumes:
+    - /home/Rishikesh/nats-data:/home/nats/configuration
+    container_name: nats_server_container
+
+networks:
+  nats-network:
+    name: nats_network
