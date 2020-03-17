@@ -4,11 +4,13 @@ import (
 	"github.com/rishikeshbedre/nats-api-server/apis"
 
 	"github.com/gin-gonic/gin"
+	"github.com/gin-contrib/cors"
 )
 
 func main() {
 	gin.SetMode(gin.ReleaseMode)
 	router := gin.Default()
+	router.Use(cors.Default())
 
 	router.GET("/user", apis.ShowUsers)
 	router.POST("/user", apis.AddUser)
