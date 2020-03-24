@@ -83,6 +83,25 @@ func OpDeleteUser(user string) error {
 	return errors.New("User:" + user + " cannot be deleted")
 }
 
+//OpShowTopics function returns all the topics present in the authorization configuration
+func OpShowTopics() map[string]int {
+	topicmap := make(map[string]int)
+	cai.RLock()
+	temp := cai.authorizationInfo
+	cai.RUnlock()
+	for _, tempinfo := range temp {
+		for _, topicpublish := range tempinfo.Permissions.Publish {
+			pvalue, _ := topicmap[topicpublish]
+			topicmap[topicpublish] = pvalue + 1
+		}
+		for _, topicsubscribe := range tempinfo.Permissions.Subscribe {
+			svalue, _ := topicmap[topicsubscribe]
+			topicmap[topicsubscribe] = svalue + 1
+		}
+	}
+	return topicmap
+}
+
 //OpAddTopic function adds topics to the particular user in the authorization configuration
 //If any of the topics are present in the request JSON are available in the authorization configuration for that particular user, this functions returns false
 func OpAddTopic(info AddDeleteTopicJSON) error {

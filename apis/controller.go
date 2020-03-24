@@ -52,6 +52,12 @@ func DeleteUser(c *gin.Context) {
 	}
 }
 
+//ShowTopics function returns all the topics present in the authorization configuration
+func ShowTopics(c *gin.Context) {
+	result := lib.OpShowTopics()
+	c.JSON(http.StatusOK, gin.H{"message": result})
+}
+
 //AddTopic function adds the topics to the particular user in authorization configuration
 //If any of the topics are present in the request JSON are available in the authorization configuration for that particular user, this functions returns a error message
 func AddTopic(c *gin.Context) {

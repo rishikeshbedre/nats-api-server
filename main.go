@@ -16,6 +16,7 @@ func main() {
 	router.POST("/user", apis.AddUser)
 	router.DELETE("/user", apis.DeleteUser)
 
+	router.GET("/topic", apis.ShowTopics)
 	router.POST("/topic", apis.AddTopic)
 	router.DELETE("/topic", apis.DeleteTopic)
 
