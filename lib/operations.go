@@ -6,6 +6,7 @@ import (
 	"os/exec"
 	"sync"
 	"time"
+	"bytes"
 
 	jsoniter "github.com/json-iterator/go"
 )
@@ -207,11 +208,19 @@ func writeConfiguration() error {
 	cai.RLock()
 	downloadconf.Authorization.Users = cai.authorizationInfo
 	cai.RUnlock()
-	byteconf, jsonbinderr := json.Marshal(downloadconf)
-	if jsonbinderr != nil {
-		return jsonbinderr
+
+	byteconf := new(bytes.Buffer)
+	enc := json.NewEncoder(byteconf)
+	enc.SetEscapeHTML(false)
+
+	if err := enc.Encode(downloadconf); err != nil {
+		return err
 	}
-	filewriteerr := ioutil.WriteFile("./configuration/authorization/auth.conf", byteconf, 0777)
+
+	byteconfstring := byteconf.String()
+	byteconfarray := []byte(byteconfstring)
+	
+	filewriteerr := ioutil.WriteFile("./configuration/authorization/auth.conf", byteconfarray, 0777)
 	if filewriteerr != nil {
 		return filewriteerr
 	}
