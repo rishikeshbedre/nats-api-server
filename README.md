@@ -33,7 +33,7 @@ NATS API Server has rest end points to add|delete user|topic where it writes the
 
 ## Usage
 
-To install NATS API Server, you need to install [Go](https://golang.org/)(**version 1.12+ is required**) and set your Go workspace.
+To install NATS API Server, you need to install [Go](https://golang.org/)(**version 1.12+ is required**) and set your Golang workspace.
 
 1. This project uses go modules and provides a make file. You should be able to simply install and start:
 
